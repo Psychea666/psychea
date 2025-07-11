@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Psychea Dolls | Patient Records</title>
+  <style>
+    body {
+      margin: 0;
+      background: #fdf6e3 url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+      font-family: 'Courier New', Courier, monospace;
+      color: #2e2e2e;
+    }
+    header {
+      background-color: #cabfa3;
+      padding: 2rem;
+      border-bottom: 2px dashed #5a5a5a;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      letter-spacing: 2px;
+    }
+    .patient-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      padding: 2rem;
+    }
+    .card {
+      background-color: #f8f1dc;
+      border: 1px solid #9e9478;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      padding: 1.5rem;
+      border-radius: 8px;
+    }
+    .card h2 {
+      margin-top: 0;
+    }
+    .nickname {
+      font-style: italic;
+      color: #b5484e;
+    }
+    .support-link {
+      margin-top: 1rem;
+      display: inline-block;
+      background-color: #d7cfae;
+      padding: 0.5rem 1rem;
+      text-decoration: none;
+      color: #2e2e2e;
+      border-radius: 4px;
+      border: 1px solid #9e9478;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      padding: 2rem;
+      color: #6e6e6e;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Psychea Dolls</h1>
+    <p><em>Confidential psychiatric records</em></p>
+  </header>
+
+  <section class="patient-cards">
+    <div class="card">
+      <h2>Itty-bitty <span class="nickname">(Крошка)</span></h2>
+      <p><strong>Real name:</strong> Ines Kain Lew</p>
+      <p><strong>Diagnosis:</strong> Obsessive limerence, violent attachment tendencies</p>
+      <p><strong>Notes:</strong> Claims to "love forever". Highly unstable. Inspired by Annie Wilkes.</p>
+      <a class="support-link" href="#">Become her guardian</a>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Psychea Dolls. All delusions reserved.
+  </footer>
+</body>
+</html>
