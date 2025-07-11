@@ -11,6 +11,8 @@
       color: #2a2a2a;
       line-height: 1.6;
       padding: 2rem;
+      position: relative;
+      overflow-x: hidden;
     }
     header {
       text-align: center;
@@ -24,20 +26,39 @@
       letter-spacing: 2px;
     }
     .rorschach {
-      display: block;
-      margin: 2rem auto;
-      width: 300px;
+      position: absolute;
+      top: 30px;
+      left: 50%;
+      transform: translateX(-50%) scale(1.5);
+      opacity: 0.6;
+      animation: drip 4s ease-in-out forwards;
+      z-index: 0;
+    }
+    @keyframes drip {
+      0% { transform: translateX(-50%) scale(0.6); opacity: 0; }
+      100% { transform: translateX(-50%) scale(1.5); opacity: 0.6; }
     }
     .card {
       max-width: 800px;
       margin: auto;
-      background: rgba(255, 255, 255, 0.8);
+      background: rgba(255, 255, 255, 0.85);
       border: 1px solid #999;
       box-shadow: 0 0 15px rgba(0,0,0,0.2);
       padding: 2rem;
+      position: relative;
+      z-index: 1;
     }
     .card p {
       font-size: 1.1rem;
+      opacity: 0;
+      white-space: pre-wrap;
+    }
+    .card p.visible {
+      animation: typing 2s steps(40, end) forwards;
+    }
+    @keyframes typing {
+      from { opacity: 1; width: 0; }
+      to { opacity: 1; width: 100%; }
     }
     .disclaimer {
       margin-top: 3rem;
@@ -45,19 +66,69 @@
       color: #666;
       text-align: center;
     }
+    .button {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 0.5rem 1rem;
+      background-color: #b5484e;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+    .manifesto {
+      margin-top: 3rem;
+      font-size: 0.95rem;
+      color: #444;
+      border-top: 1px dashed #999;
+      padding-top: 1.5rem;
+    }
+    .language-switch {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: #eee;
+      border: 1px solid #ccc;
+      padding: 0.3rem 0.7rem;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      z-index: 2;
+    }
   </style>
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const audio = new Audio('https://cdn.pixabay.com/audio/2022/10/27/audio_1f93764502.mp3');
+      audio.volume = 0.3;
+      audio.play().catch(e => console.log('Autoplay prevented'));const paragraphs = document.querySelectorAll('.card p');
+  let delay = 0;
+  paragraphs.forEach(p => {
+    setTimeout(() => {
+      p.classList.add('visible');
+    }, delay);
+    delay += 2000;
+  });
+});
+
+  </script>
 </head>
 <body>
+  <a class="language-switch" href="#">RU / EN</a>
   <header>
     <h1>psychea asylum</h1>
-   <img src="https://i.imgur.com/W1ayKUt.jpg" alt="Rorschach Test" class="rorschach">
+    <img src="https://cdn.midjourney.com/50b68e9e-9c42-4073-8a6b-e521d64656fc/0_3.webp" alt="Rorschach Test" class="rorschach">
   </header>
   <main class="card">
     <p>We thank you for your willingness to take responsibility for a high-risk patient. The institution acknowledges your courage.</p>
     <p>The following file contains guidance for handling unstable behavior, sudden outbursts, compulsive rituals, and violent episodes. In case of incident, do not attempt to pacify the subject manually. Restraints are provided for your safety.</p>
     <p>Remember: the patient may <em>appear</em> harmless, but displays clear patterns of dissociation, identity fragmentation, and compulsive attachment.</p>
     <p>Music boxes, sharp tools, and mirrors must be kept <strong>out of reach</strong>.</p>
-    <p>If you've received this file, your clearance has been approved. Further details are classified. Proceed to <a href="#">intake records &rarr;</a></p>
+    <p>If you've received this file, your clearance has been approved.</p>
+    <a class="button" href="#">View patient records</a><div class="manifesto">
+  <p><strong>Institutional Note:</strong><br>
+  The Psychea facility was established in 1923 as a sanctuary for fragmented minds. We believe no psyche is irredeemable — only misunderstood. Our mission is to study, contain, and provide curated care for those whose perception deviates from consensus reality.</p>
+  <p>Some of our subjects were once thought imaginary. Others were abandoned. All of them are real here.</p>
+</div>
+
   </main>
   <p class="disclaimer">psycheadolls.com &copy; 2025 — archive of the institute</p>
 </body>
